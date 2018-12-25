@@ -1,0 +1,16 @@
+package shgjj.tqgl.sys.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+/** 
+* @author 石焱
+* @version 创建时间：2017年8月8日 上午9:52:19 
+* @comment 业务验证类 
+* 1、实现业务验证资源的增删改查
+*/
+@Controller
+@RequestMapping("/sys/verify")
+public class TqSysVerifyController {
+
+}

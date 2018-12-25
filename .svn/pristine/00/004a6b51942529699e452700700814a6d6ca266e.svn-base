@@ -1,0 +1,145 @@
+<%@ page contentType="text/html; charset=UTF-8"%>
+
+<head>
+<!--  引入jquery的文件（如果check方法未定义，就去掉然后用easyui的表单验证）    -->
+<%@include file="../../../../js-library/jslib_header.jsp"%>
+<title>系统_业务资料配置表 根据业务编号 配置具体业务需要的业务资料，用于受理时确认资料是否齐全；另外是否需要影像等也可以配置在这里  需要配置 显示顺序、是否强制、是否需要影像（否、是、可选）、资料名称、资料代码等。   业务实现的时候需要检查配置中的资料是否失效了编辑页面</title>
+</head>
+
+<body>
+
+<script type="text/javascript">
+	var vForm;
+	$(document).ready(function(){
+	//	var vForm=$("#ff").Validform({tiptype:3});
+			var vForm=$("#ff")
+	}); 
+	
+	function validSelect(obj){
+		$("input[name='"+$(obj).attr('id')+"']").attr('datatype',$(obj).attr('datatype'));
+		$("input[name='"+$(obj).attr('id')+"']").attr('errormsg',$(obj).attr('errormsg'));
+		$("input[name='"+$(obj).attr('id')+"']").attr('nullmsg',$(obj).attr('nullmsg'));
+		vForm.check(false);
+	}
+	
+   function subForm(){
+   	   $.post("updateTqSysMaterialCfg", $("#ff").serialize(),
+	   	function (data, textStatus){
+	   //		handlerExp(data);
+	      	var msg=data.message;
+	      	if(msg)
+	    	  alert(msg);
+	   }, "json");
+	   
+   }    
+       
+</script>
+
+
+	<form id="ff" method="post">
+		<input type="hidden" id="id" name="id" value="${tqSysMaterialCfg.id}" />
+		<table>
+				<tr>
+					<td>业务资料配置ID</td>
+					<td>
+						<input type="text" name="materialCfgId" id="materialCfgId" class="dfinput"
+						value="${tqSysMaterialCfg.materialCfgId}" /> 
+					</td>
+				</tr>
+				<tr>
+					<td>业务资料配置名称</td>
+					<td>
+						<input type="text" name="materialCfgName" id="materialCfgName" class="dfinput"
+						value="${tqSysMaterialCfg.materialCfgName}" /> 
+					</td>
+				</tr>
+				<tr>
+					<td>状态 1正常 0 失效  2 未生效</td>
+					<td>
+						<input type="text" name="status" id="status" class="dfinput"
+						value="${tqSysMaterialCfg.status}" /> 
+					</td>
+				</tr>
+				<tr>
+					<td>业务类型</td>
+					<td>
+						<input type="text" name="businessType" id="businessType" class="dfinput"
+						value="${tqSysMaterialCfg.businessType}" /> 
+					</td>
+				</tr>
+				<tr>
+					<td>业务明细类型</td>
+					<td>
+						<input type="text" name="businessTypeDetail" id="businessTypeDetail" class="dfinput"
+						value="${tqSysMaterialCfg.businessTypeDetail}" /> 
+					</td>
+				</tr>
+				<tr>
+					<td>配置说明</td>
+					<td>
+						<input type="text" name="remark" id="remark" class="dfinput"
+						value="${tqSysMaterialCfg.remark}" /> 
+					</td>
+				</tr>
+				<tr>
+					<td>生效时间</td>
+					<td>
+						<input type="text" name="birthday" plugin="datepicker"
+						value="${tqSysMaterialCfg.effectTime}" />
+					</td>
+				</tr>
+				<tr>
+					<td>失效时间</td>
+					<td>
+						<input type="text" name="birthday" plugin="datepicker"
+						value="${tqSysMaterialCfg.deadTime}" />
+					</td>
+				</tr>
+				<tr>
+					<td>创建时间</td>
+					<td>
+						<input type="text" name="birthday" plugin="datepicker"
+						value="${tqSysMaterialCfg.createdTime}" />
+					</td>
+				</tr>
+				<tr>
+					<td>创建人ID</td>
+					<td>
+						<input type="text" name="createdById" id="createdById" class="dfinput"
+						value="${tqSysMaterialCfg.createdById}" /> 
+					</td>
+				</tr>
+				<tr>
+					<td>创建人姓名</td>
+					<td>
+						<input type="text" name="createdByName" id="createdByName" class="dfinput"
+						value="${tqSysMaterialCfg.createdByName}" /> 
+					</td>
+				</tr>
+				<tr>
+					<td>最后修改时间</td>
+					<td>
+						<input type="text" name="birthday" plugin="datepicker"
+						value="${tqSysMaterialCfg.lastModifiedTime}" />
+					</td>
+				</tr>
+				<tr>
+					<td>最后修改操作员ID</td>
+					<td>
+						<input type="text" name="lastModifiedById" id="lastModifiedById" class="dfinput"
+						value="${tqSysMaterialCfg.lastModifiedById}" /> 
+					</td>
+				</tr>
+				<tr>
+					<td>最后修改操作员姓名</td>
+					<td>
+						<input type="text" name="lastModifiedByName" id="lastModifiedByName" class="dfinput"
+						value="${tqSysMaterialCfg.lastModifiedByName}" /> 
+					</td>
+				</tr>
+		</table>
+		<input name="" type="button" class="btn" value="确认保存"
+			onclick="subForm()" />
+	</form>
+</body>
+

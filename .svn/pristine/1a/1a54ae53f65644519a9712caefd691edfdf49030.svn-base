@@ -1,0 +1,309 @@
+package shgjj.tqgl.bo;
+
+import java.io.Serializable;
+import javax.persistence.*;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.math.BigDecimal;
+import java.util.Date;
+
+
+/**
+ * The persistent class for the TQ_YW_MAIN database table.
+ * 
+ */
+@Entity
+@Table(name="TQ_YW_MAIN")
+@NamedQuery(name="TqYwMainEntity.findAll", query="SELECT t FROM TqYwMainEntity t")
+public class TqYwMainEntity implements Serializable {
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@Column(name="BUSINESS_NUM")
+	private String businessNum;
+
+	@Column(name="ACCEPT_TIME")
+	private String acceptTime;
+
+	@Column(name="AGREEMENT_NUM")
+	private String agreementNum;
+
+	@Column(name="APPROVE_AMOUNT_SUM")
+	private BigDecimal approveAmountSum;
+
+	@Column(name="APPROVE_STATUS")
+	private String approveStatus;
+
+	@Column(name="APPROVE_TIME")
+	private String approveTime;
+
+	private String area;
+
+	private String branch;
+
+	@Column(name="BUSINESS_SOURCE")
+	private String businessSource;
+
+	@Column(name="BUSINESS_TYPE")
+	private String businessType;
+
+	@Column(name="BUSINESS_TYPE_DETAIL")
+	private String businessTypeDetail;
+
+	@Column(name="END_OPERATOR_ID")
+	private String endOperatorId;
+
+	@Column(name="END_OPERSOTR_NAME")
+	private String endOpersotrName;
+
+	@Column(name="END_REASON")
+	private String endReason;
+
+	@Column(name="END_REASON_CODE")
+	private String endReasonCode;
+
+	@Temporal(TemporalType.TIME)
+	@Column(name="END_TIME")
+	private Date endTime;
+
+	@Column(name="EX_VERIFY_STATUS")
+	private String exVerifyStatus;
+
+	@Column(name="HAPPEN_AMOUNT")
+	private BigDecimal happenAmount;
+
+	@Column(name="LETTER_STATUS")
+	private String letterStatus;
+
+	@Column(name="MAIN_NUM")
+	private String mainNum;
+
+	@Column(name="OPERATOR_ID")
+	private String operatorId;
+
+	@Column(name="OPERATOR_NAME")
+	private String operatorName;
+
+	@Column(name="PAY_TMIE")
+	private String payTmie;
+
+	private String status;
+
+	private String tqyy;
+
+	@Column(name="VERIFY_CFG_ID")
+	private BigDecimal verifyCfgId;
+
+	public TqYwMainEntity() {
+	}
+
+	public String getBusinessNum() {
+		return this.businessNum;
+	}
+
+	public void setBusinessNum(String businessNum) {
+		this.businessNum = businessNum;
+	}
+
+	public String getAcceptTime() {
+		return this.acceptTime;
+	}
+
+	public void setAcceptTime(String acceptTime) {
+		this.acceptTime = acceptTime;
+	}
+
+	public String getAgreementNum() {
+		return this.agreementNum;
+	}
+
+	public void setAgreementNum(String agreementNum) {
+		this.agreementNum = agreementNum;
+	}
+
+	public BigDecimal getApproveAmountSum() {
+		return this.approveAmountSum;
+	}
+
+	public void setApproveAmountSum(BigDecimal approveAmountSum) {
+		this.approveAmountSum = approveAmountSum;
+	}
+
+	public String getApproveStatus() {
+		return this.approveStatus;
+	}
+
+	public void setApproveStatus(String approveStatus) {
+		this.approveStatus = approveStatus;
+	}
+
+	public String getApproveTime() {
+		return this.approveTime;
+	}
+
+	public void setApproveTime(String approveTime) {
+		this.approveTime = approveTime;
+	}
+
+	public String getArea() {
+		return this.area;
+	}
+
+	public void setArea(String area) {
+		this.area = area;
+	}
+
+	public String getBranch() {
+		return this.branch;
+	}
+
+	public void setBranch(String branch) {
+		this.branch = branch;
+	}
+
+	public String getBusinessSource() {
+		return this.businessSource;
+	}
+
+	public void setBusinessSource(String businessSource) {
+		this.businessSource = businessSource;
+	}
+
+	public String getBusinessType() {
+		return this.businessType;
+	}
+
+	public void setBusinessType(String businessType) {
+		this.businessType = businessType;
+	}
+
+	public String getBusinessTypeDetail() {
+		return this.businessTypeDetail;
+	}
+
+	public void setBusinessTypeDetail(String businessTypeDetail) {
+		this.businessTypeDetail = businessTypeDetail;
+	}
+
+	public String getEndOperatorId() {
+		return this.endOperatorId;
+	}
+
+	public void setEndOperatorId(String endOperatorId) {
+		this.endOperatorId = endOperatorId;
+	}
+
+	public String getEndOpersotrName() {
+		return this.endOpersotrName;
+	}
+
+	public void setEndOpersotrName(String endOpersotrName) {
+		this.endOpersotrName = endOpersotrName;
+	}
+
+	public String getEndReason() {
+		return this.endReason;
+	}
+
+	public void setEndReason(String endReason) {
+		this.endReason = endReason;
+	}
+
+	public String getEndReasonCode() {
+		return this.endReasonCode;
+	}
+
+	public void setEndReasonCode(String endReasonCode) {
+		this.endReasonCode = endReasonCode;
+	}
+
+	public Date getEndTime() {
+		return this.endTime;
+	}
+
+	public void setEndTime(Date endTime) {
+		this.endTime = endTime;
+	}
+
+	public String getExVerifyStatus() {
+		return this.exVerifyStatus;
+	}
+
+	public void setExVerifyStatus(String exVerifyStatus) {
+		this.exVerifyStatus = exVerifyStatus;
+	}
+
+	public BigDecimal getHappenAmount() {
+		return this.happenAmount;
+	}
+
+	public void setHappenAmount(BigDecimal happenAmount) {
+		this.happenAmount = happenAmount;
+	}
+
+	public String getLetterStatus() {
+		return this.letterStatus;
+	}
+
+	public void setLetterStatus(String letterStatus) {
+		this.letterStatus = letterStatus;
+	}
+
+	public String getMainNum() {
+		return this.mainNum;
+	}
+
+	public void setMainNum(String mainNum) {
+		this.mainNum = mainNum;
+	}
+
+	public String getOperatorId() {
+		return this.operatorId;
+	}
+
+	public void setOperatorId(String operatorId) {
+		this.operatorId = operatorId;
+	}
+
+	public String getOperatorName() {
+		return this.operatorName;
+	}
+
+	public void setOperatorName(String operatorName) {
+		this.operatorName = operatorName;
+	}
+
+	public String getPayTmie() {
+		return this.payTmie;
+	}
+
+	public void setPayTmie(String payTmie) {
+		this.payTmie = payTmie;
+	}
+
+	public String getStatus() {
+		return this.status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public String getTqyy() {
+		return this.tqyy;
+	}
+
+	public void setTqyy(String tqyy) {
+		this.tqyy = tqyy;
+	}
+
+	public BigDecimal getVerifyCfgId() {
+		return this.verifyCfgId;
+	}
+
+	public void setVerifyCfgId(BigDecimal verifyCfgId) {
+		this.verifyCfgId = verifyCfgId;
+	}
+
+}

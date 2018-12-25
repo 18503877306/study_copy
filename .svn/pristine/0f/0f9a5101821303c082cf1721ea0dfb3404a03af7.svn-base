@@ -1,0 +1,110 @@
+package shgjj.tqgl.sys.controller;
+
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import gov.util.bean.BeanUtils;
+import gov.util.jpa.Pages;
+import gov.util.jpa.Query;
+import gov.util.jpa.json.EasyUIJsonUtils;
+import gov.util.jpa.operator.FilterOperator;
+import shgjj.tqgl.sys.bo.TqSysMaterialCfgEntity;
+import shgjj.tqgl.sys.service.TqSysMaterialCfgService;
+
+/**
+ * 
+ * @author shiyan
+ * @date 2017年8月10日 下午16:23:49 
+ * @Description: 业务资源配置controller
+ *
+ */
+@Controller
+@RequestMapping("/tqSysMaterialCfg")
+public class TqSysMaterialCfgController {
+
+	@Autowired
+	private TqSysMaterialCfgService tqSysMaterialCfgService; 
+	
+	@RequestMapping("/toListPage")
+	public String queryList(HttpServletRequest request,
+			HttpServletResponse response)
+	{
+			
+		return "/tqgl/sys/tqSysMaterialCfg/tqSysMaterialCfgList";
+	}
+	
+	
+	@ResponseBody
+	@RequestMapping("/listTqSysMaterialCfg")
+	public Map<String, Object> listtqSysMaterialCfgs(HttpServletRequest request,
+			HttpServletResponse response,@RequestParam HashMap<String, Object> conditions,
+			int page,int rows,
+			Map<String, Object> model) {
+		Query<TqSysMaterialCfgEntity> query = Query.from(TqSysMaterialCfgEntity.class).filter(conditions, null, FilterOperator.LIKE);
+		Page<TqSysMaterialCfgEntity>  tqSysMaterialCfgEntities = tqSysMaterialCfgService.findAll(query, Pages.setPageAndSize(page,rows));
+		Map<String, Object> jsonMap = EasyUIJsonUtils.convertJpaPageToJson(tqSysMaterialCfgEntities);
+		
+		return jsonMap;
+	}
+	
+	@RequestMapping("/editTqSysMaterialCfg")
+	public String edittqSysMaterialCfg(String id,Map<String, Object> model){
+		TqSysMaterialCfgEntity tqSysMaterialCfg = (TqSysMaterialCfgEntity)tqSysMaterialCfgService.find(TqSysMaterialCfgEntity.class, id);
+		model.put("tqSysMaterialCfg", tqSysMaterialCfg); 
+		return "/tqgl/sys/tqSysMaterialCfg/tqSysMaterialCfgEdit";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/updateTqSysMaterialCfg")
+	public Map<?, ?> updatetqSysMaterialCfg(HttpServletRequest request,
+			HttpServletResponse response, TqSysMaterialCfgEntity tqSysMaterialCfg){
+		TqSysMaterialCfgEntity newTqSysMaterialCfg = (TqSysMaterialCfgEntity)tqSysMaterialCfgService.find(TqSysMaterialCfgEntity.class, tqSysMaterialCfg.getMaterialCfgId());
+		if(newTqSysMaterialCfg != null)
+			BeanUtils.copyProperties(tqSysMaterialCfg, newTqSysMaterialCfg);
+		else
+			newTqSysMaterialCfg = tqSysMaterialCfg;
+		//TODO 在这要给实体newTest设置相应的创建人的ID的姓名（创建日期不用插入了）分别是setCreatedById()和setCreatedByName()方法
+		
+		//TODO 在这要给实体newTest设置相应的修改人的ID的姓名（修改日期日期不用操作了）分别是setLastModifiedById()和setLastModifiedByName()方法
+		
+		tqSysMaterialCfgService.save(newTqSysMaterialCfg);
+		Map<String, Object> jsonMap = new HashMap<String, Object>();
+		jsonMap.put("result", "success");
+		return jsonMap;
+	}
+	
+	@ResponseBody
+	@RequestMapping("/deleteTqSysMaterialCfg")
+	public String delete(String[] id){
+		tqSysMaterialCfgService.delete(TqSysMaterialCfgEntity.class,Arrays.asList(id));
+		return "sucess";
+	}
+	
+	@RequestMapping("/addTqSysMaterialCfg")
+	public String add(){
+		//TODO 初始化下拉框数据等
+		
+		
+		return "/tqgl/sys/tqSysMaterialCfg/tqSysMaterialCfgAdd";
+	}
+	
+	@RequestMapping("/saveTqSysMaterialResource")
+	public String save(TqSysMaterialCfgEntity tqSysMaterialResource ){
+		
+		tqSysMaterialCfgService.save(tqSysMaterialResource);
+		
+		return "redirect:/tqSysMaterialResource/toListPage";
+	}
+
+}

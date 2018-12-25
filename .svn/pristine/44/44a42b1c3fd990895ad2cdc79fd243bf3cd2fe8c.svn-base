@@ -1,0 +1,69 @@
+<ivysettings>
+	<!-- maven -->
+	<property name="local-maven2-pattern"
+		value="${user.home}/.m2/repo/[organisation]/[module]/[revision]/[module]-[revision]"
+		override="true" />
+
+
+
+	<settings defaultResolver="default" />
+
+	<!-- configure caches -->
+	<caches repositoryCacheDir="${user.home}/.ivy2/cache">
+		<!-- do not cache from local .m2 -->
+		<cache name="nocache" useOrigin="true" />
+		<cache name="default" />
+	</caches>
+
+	<resolvers>
+		<chain name="default">
+			<filesystem name="local-maven-2" m2compatible="true"
+				local="true" cache="nocache">
+				<ivy pattern="${local-maven2-pattern}.pom" />
+				<artifact pattern="${local-maven2-pattern}(-[classifier]).[ext]" />
+			</filesystem>
+
+			<ibiblio name="repomanager"
+				root="http://xeawl.vicp.cc:6061/nexus/content/repositories/mymaven/"
+				m2compatible="true" cache="default" />
+			<ibiblio name="repomanager2"
+				root="http://maven.aliyun.com/nexus/content/groups/public/"
+				m2compatible="true" cache="default" />
+
+
+			<ibiblio name="central-out" root="http://repo1.maven.org/maven2/"
+				m2compatible="true" cache="default" />
+<!-- 			<ibiblio name="central-ml" -->
+<!-- 				root="http://maven.oschina.net/content/groups/public/" m2compatible="true" -->
+<!-- 				cache="default" /> -->
+<!-- 			<ibiblio name="sonatype" -->
+<!-- 				root="https://oss.sonatype.org/content/repositories/snapshots/" -->
+<!-- 				m2compatible="true" cache="default" /> -->
+
+<!-- 			<ibiblio name="central"  -->
+<!-- 				root="http://10.1.8.82:8081/nexus/content/repositories/central/" -->
+<!-- 				m2compatible="true" cache="default" /> -->
+<!-- 			<ibiblio name="codehaus-snapshots" -->
+<!-- 				root="http://10.1.8.82:8081/nexus/content/repositories/codehaus-snapshots/" -->
+<!-- 				m2compatible="true" changingPattern=".*SNAPSHOT" cache="default" /> -->
+<!-- 			<ibiblio name="third-rep" -->
+<!-- 				root="http://10.1.8.82:8081/nexus/content/repositories/thirdparty/" -->
+<!-- 				m2compatible="true" cache="default" /> -->
+<!-- 			<ibiblio name="gov-release" -->
+<!-- 				root="http://10.1.8.82:8081/nexus/content/repositories/releases/" -->
+<!-- 				m2compatible="true" cache="default" /> -->
+<!-- 			<ibiblio name="gov-snapshot" -->
+<!-- 				root="http://10.1.8.82:8081/nexus/content/repositories/snapshots/" -->
+<!-- 				m2compatible="true" cache="default" /> -->
+<!-- 			<ibiblio name="apache-snapshots" -->
+<!-- 				root="http://10.1.8.82:8081/nexus/content/repositories/apache-snapshots/" -->
+<!-- 				m2compatible="true" cache="default" /> -->
+<!-- 			<ibiblio name="spring-roo-" -->
+<!-- 				root="http://10.1.8.82:8081/nexus/content/repositories/spring-roo-repository-snapshot/" -->
+<!-- 				m2compatible="true" cache="default" /> -->
+
+
+
+		</chain>
+	</resolvers>
+</ivysettings>

@@ -1,0 +1,39 @@
+package controller;
+
+import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import demo.controller.DemoController;
+import gov.framework.test.BaseControllerTest;
+
+@Controller
+@RequestMapping("/test")
+public class TestController extends BaseControllerTest {
+	
+	@Autowired
+	private DemoController controller;
+	
+	 @RequestMapping("/list")
+	    public String listMaterial(){
+	    	   	System.out.println("this is test.......");
+	        return "demo/mydemo";
+	    }    
+	
+	@Test
+	public void test(){
+		request.setMethod("GET");
+		request.addParameter("page", "1");
+		request.addParameter("rows", "10");
+        request.setRequestURI("/hello/hello");
+        try {
+            ModelAndView handle = this.adapter.handle(request, response, this.controller);
+        } catch (Exception e) {
+        	System.out.println("222");
+            e.printStackTrace();
+        }
+	}
+
+}

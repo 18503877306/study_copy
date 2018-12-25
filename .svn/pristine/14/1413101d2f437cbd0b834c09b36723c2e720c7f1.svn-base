@@ -1,0 +1,55 @@
+package shgjj.tqgl.business.onceBusiness.retire.controller;
+
+
+
+import java.util.HashMap;
+import java.util.Map;
+
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import shgjj.tqgl.business.onceBusiness.retire.bo.RetireBO;
+import shgjj.tqgl.business.onceBusiness.retire.service.RetireService;
+
+/** 
+* @author Shenhuali
+* @version 创建时间：2017年7月31日 上午11:44:28 
+* 类说明 
+*/
+@Controller
+@RequestMapping("/business/onceBusiness/retire")
+public class RetireController  {
+    
+	 private static final Logger logger =Logger.getLogger(RetireController.class);
+	 
+	
+	 @Autowired
+	 private RetireService  retireService;
+	 
+
+    @RequestMapping("/view")
+    public String viewRetire(){
+    	logger.info("录入页面");
+    	retireService.CheckRetire();
+        return "/tqgl/business/oncebusiness/retire/retireRegister";
+    }  
+    
+	@ResponseBody
+	@RequestMapping("/check")
+	public Map<?, ?>  doRetirecheck (String id,Map<String, Object> model){
+		logger.info("");
+		
+		Map<String, Object> jsonMap = new HashMap<String, Object>();
+		jsonMap.put("result", "success");
+		return jsonMap;
+	}
+	@RequestMapping("/saveRetireRegister")
+	public String saveRetireRegister(RetireBO bo){
+		
+		return retireService.saveRetireRegister(bo);
+	}
+ 
+}

@@ -1,0 +1,21 @@
+package shgjj.tqgl.sys.service.impl;
+
+import gov.util.jpa.impl.BaseJpaServiceImpl;
+import gov.util.jpa.BaseJpaDao;
+
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import shgjj.tqgl.sys.dao.TqSysMaterialCfgDao;
+import shgjj.tqgl.sys.service.TqSysMaterialCfgService;
+
+@Service
+public class TqSysMaterialCfgServiceImpl extends BaseJpaServiceImpl implements TqSysMaterialCfgService{
+		@Autowired
+		private TqSysMaterialCfgDao tqSysMaterialCfgDao; 
+		
+		public BaseJpaDao getJpaDao() {
+			return tqSysMaterialCfgDao;
+		}
+}

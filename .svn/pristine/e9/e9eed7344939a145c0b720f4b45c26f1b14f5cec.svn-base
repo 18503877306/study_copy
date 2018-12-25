@@ -1,0 +1,254 @@
+package  shgjj.tqgl.sys.bo;
+
+import java.io.Serializable;
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+import org.apache.log4j.Logger;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import gov.util.jpa.entity.ICreateEntity;
+import gov.util.jpa.entity.IUpdateEntity;
+
+
+/**
+ * 
+ * @author shiyan
+ * @date 2017年8月10日 下午5:45:12 
+ * @Description: 业务资料资源
+ *
+ */
+@Entity
+@Table(name = "TQ_SYS_MATERIAL_RESOURCE")
+public class TqSysMaterialResourceEntity implements Serializable,ICreateEntity,IUpdateEntity{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public static final Logger logger = Logger.getLogger(TqSysMaterialResourceEntity.class);
+	
+	/**
+	 * 资料ID
+	 */
+	private Integer materialId;
+	/**
+	 * 资料名称
+	 */
+	private String materialName;
+	/**
+	 * 状态 0正常 1 失效
+	 */
+	private String status;
+	/**
+	 * 资料备注
+	 */
+	private String materialRemark;
+	/**
+	 * 资料编码(预留)
+	 */
+	private String materialCode;
+	/**
+	 * 创建时间
+	 */
+	@DateTimeFormat(pattern="yyyy-MM-dd")
+	private Date createdTime;
+	/**
+	 * 创建人ID
+	 */
+	private String createdById;
+	/**
+	 * 创建人姓名
+	 */
+	private String createdByName;
+	/**
+	 * 最后修改时间
+	 */
+	@DateTimeFormat(pattern="yyyy-MM-dd")
+	private Date lastModifiedTime;
+	/**
+	 * 最后修改操作员ID
+	 */
+	private String lastModifiedById;
+	/**
+	 * 最后修改操作员姓名
+	 */
+	private String lastModifiedByName;
+	
+	/**
+	 * 资料ID
+	 * @return materialId
+	 */
+	@Id
+	@Column(name = "MATERIAL_ID" ,unique = true ,nullable = false)
+	@GeneratedValue(generator = "SEQ_TQ_MATERIAL_ID" , strategy = GenerationType.SEQUENCE)
+	@SequenceGenerator(name = "SEQ_TQ_MATERIAL_ID" ,sequenceName = "SEQ_TQ_MATERIAL_ID",allocationSize = 1)
+	public Integer getMaterialId(){
+		return this.materialId;
+	}
+	/**
+	 * 资料名称
+	 * @return materialName
+	 */
+	@Column(name = "MATERIAL_NAME")
+	public String getMaterialName(){
+		return this.materialName;
+	}
+	/**
+	 * 状态 0正常 1 失效
+	 * @return status
+	 */
+	@Column(name = "STATUS")
+	public String getStatus(){
+		return this.status;
+	}
+	/**
+	 * 资料备注
+	 * @return materialRemark
+	 */
+	@Column(name = "MATERIAL_REMARK")
+	public String getMaterialRemark(){
+		return this.materialRemark;
+	}
+	/**
+	 * 资料编码(预留)
+	 * @return materialCode
+	 */
+	@Column(name = "MATERIAL_CODE")
+	public String getMaterialCode(){
+		return this.materialCode;
+	}
+	/**
+	 * 创建时间
+	 * @return createdTime
+	 */
+	@Column(name = "CREATED_TIME")
+	public Date getCreatedTime(){
+		return this.createdTime;
+	}
+	/**
+	 * 创建人ID
+	 * @return createdById
+	 */
+	@Column(name = "CREATED_BY_ID")
+	public String getCreatedById(){
+		return this.createdById;
+	}
+	/**
+	 * 创建人姓名
+	 * @return createdByName
+	 */
+	@Column(name = "CREATED_BY_NAME")
+	public String getCreatedByName(){
+		return this.createdByName;
+	}
+	/**
+	 * 最后修改时间
+	 * @return lastModifiedTime
+	 */
+	@Column(name = "LAST_MODIFIED_TIME")
+	public Date getLastModifiedTime(){
+		return this.lastModifiedTime;
+	}
+	/**
+	 * 最后修改操作员ID
+	 * @return lastModifiedById
+	 */
+	@Column(name = "LAST_MODIFIED_BY_ID")
+	public String getLastModifiedById(){
+		return this.lastModifiedById;
+	}
+	/**
+	 * 最后修改操作员姓名
+	 * @return lastModifiedByName
+	 */
+	@Column(name = "LAST_MODIFIED_BY_NAME")
+	public String getLastModifiedByName(){
+		return this.lastModifiedByName;
+	}
+	/**
+	 * 资料ID
+	 * @param materialId 资料ID
+	 */
+	public void setMaterialId(Integer materialId){
+		this.materialId = materialId;
+	}
+	/**
+	 * 资料名称
+	 * @param materialName 资料名称
+	 */
+	public void setMaterialName(String materialName){
+		this.materialName = materialName;
+	}
+	/**
+	 * 状态 0正常 1 失效
+	 * @param status 状态 0正常 1失效
+	 */
+	public void setStatus(String status){
+		this.status = status;
+	}
+	/**
+	 * 资料备注
+	 * @param materialRemark 资料备注
+	 */
+	public void setMaterialRemark(String materialRemark){
+		this.materialRemark = materialRemark;
+	}
+	/**
+	 * 资料编码(预留)
+	 * @param materialCode 资料编码(预留)
+	 */
+	public void setMaterialCode(String materialCode){
+		this.materialCode = materialCode;
+	}
+	/**
+	 * 创建时间
+	 * @param createdTime 创建时间
+	 */
+	public void setCreatedTime(Date createdTime){
+		this.createdTime = createdTime;
+	}
+	/**
+	 * 创建人ID
+	 * @param createdById 创建人ID
+	 */
+	public void setCreatedById(String createdById){
+		this.createdById = createdById;
+	}
+	/**
+	 * 创建人姓名
+	 * @param createdByName 创建人姓名
+	 */
+	public void setCreatedByName(String createdByName){
+		this.createdByName = createdByName;
+	}
+	/**
+	 * 最后修改时间
+	 * @param lastModifiedTime 最后修改时间
+	 */
+	public void setLastModifiedTime(Date lastModifiedTime){
+		this.lastModifiedTime = lastModifiedTime;
+	}
+	/**
+	 * 最后修改操作员ID
+	 * @param lastModifiedById 最后修改操作员ID
+	 */
+	public void setLastModifiedById(String lastModifiedById){
+		this.lastModifiedById = lastModifiedById;
+	}
+	/**
+	 * 最后修改操作员姓名
+	 * @param lastModifiedByName 最后修改操作员姓名
+	 */
+	public void setLastModifiedByName(String lastModifiedByName){
+		this.lastModifiedByName = lastModifiedByName;
+	}
+}

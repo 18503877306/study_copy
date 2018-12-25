@@ -1,0 +1,19 @@
+package shgjj.tqgl.sys.service.impl;
+
+import gov.util.jpa.impl.BaseJpaServiceImpl;
+import shgjj.tqgl.sys.dao.TqSysVerifyCfgDao;
+import shgjj.tqgl.sys.service.TqSysVerifyCfgService;
+import gov.util.jpa.BaseJpaDao;
+
+import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Autowired;
+
+@Service
+public class TqSysVerifyCfgServiceImpl extends BaseJpaServiceImpl implements TqSysVerifyCfgService{
+		@Autowired
+		private TqSysVerifyCfgDao tqSysVerifyCfgDao; 
+		
+		public BaseJpaDao getJpaDao() {
+			return tqSysVerifyCfgDao;
+		}
+}

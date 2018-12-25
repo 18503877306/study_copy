@@ -1,0 +1,11 @@
+package shgjj.tqgl.sys.dao.impl;
+
+import gov.util.jpa.impl.BaseJpaDaoImpl;
+import shgjj.tqgl.sys.dao.TqSysMaterialResourceDao;
+
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class TqSysMaterialResourceDaoImpl extends BaseJpaDaoImpl implements TqSysMaterialResourceDao{
+	
+}

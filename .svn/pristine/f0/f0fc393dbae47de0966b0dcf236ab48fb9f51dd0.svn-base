@@ -1,0 +1,145 @@
+package shgjj.tqgl.sys.bo;
+
+import java.io.Serializable;
+import javax.persistence.*;
+import java.util.Date;
+
+
+/**
+ * The persistent class for the TQ_SYS_MATERIAL_RESOURCE database table.
+ * 
+ */
+@Entity
+@Table(name="TQ_SYS_MATERIAL_RESOURCE")
+public class TqSysMaterialResourceEntity implements Serializable {
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	//@SequenceGenerator(name="TQ_SYS_MATERIAL_RESOURCE_MATERIALID_GENERATOR", sequenceName="SEQ_TQ_MATERIAL_ID")
+	//@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="TQ_SYS_MATERIAL_RESOURCE_MATERIALID_GENERATOR")
+	@Column(name="MATERIAL_ID")
+	private long materialId;
+
+	@Column(name="CREATED_BY_ID")
+	private String createdById;
+
+	@Column(name="CREATED_BY_NAME")
+	private String createdByName;
+
+	@Temporal(TemporalType.DATE)
+	@Column(name="CREATED_TIME")
+	private Date createdTime;
+
+	@Column(name="LAST_MODIFIED_BY_ID")
+	private String lastModifiedById;
+
+	@Column(name="LAST_MODIFIED_BY_NAME")
+	private String lastModifiedByName;
+
+	@Temporal(TemporalType.DATE)
+	@Column(name="LAST_MODIFIED_TIME")
+	private Date lastModifiedTime;
+
+	@Column(name="MATERIAL_CODE")
+	private String materialCode;
+
+	@Column(name="MATERIAL_NAME")
+	private String materialName;
+
+	@Column(name="MATERIAL_REMARK")
+	private String materialRemark;
+
+	private String status;
+
+	public TqSysMaterialResourceEntity() {
+	}
+
+	public long getMaterialId() {
+		return this.materialId;
+	}
+
+	public void setMaterialId(long materialId) {
+		this.materialId = materialId;
+	}
+
+	public String getCreatedById() {
+		return this.createdById;
+	}
+
+	public void setCreatedById(String createdById) {
+		this.createdById = createdById;
+	}
+
+	public String getCreatedByName() {
+		return this.createdByName;
+	}
+
+	public void setCreatedByName(String createdByName) {
+		this.createdByName = createdByName;
+	}
+
+	public Date getCreatedTime() {
+		return this.createdTime;
+	}
+
+	public void setCreatedTime(Date createdTime) {
+		this.createdTime = createdTime;
+	}
+
+	public String getLastModifiedById() {
+		return this.lastModifiedById;
+	}
+
+	public void setLastModifiedById(String lastModifiedById) {
+		this.lastModifiedById = lastModifiedById;
+	}
+
+	public String getLastModifiedByName() {
+		return this.lastModifiedByName;
+	}
+
+	public void setLastModifiedByName(String lastModifiedByName) {
+		this.lastModifiedByName = lastModifiedByName;
+	}
+
+	public Date getLastModifiedTime() {
+		return this.lastModifiedTime;
+	}
+
+	public void setLastModifiedTime(Date lastModifiedTime) {
+		this.lastModifiedTime = lastModifiedTime;
+	}
+
+	public String getMaterialCode() {
+		return this.materialCode;
+	}
+
+	public void setMaterialCode(String materialCode) {
+		this.materialCode = materialCode;
+	}
+
+	public String getMaterialName() {
+		return this.materialName;
+	}
+
+	public void setMaterialName(String materialName) {
+		this.materialName = materialName;
+	}
+
+	public String getMaterialRemark() {
+		return this.materialRemark;
+	}
+
+	public void setMaterialRemark(String materialRemark) {
+		this.materialRemark = materialRemark;
+	}
+
+	public String getStatus() {
+		return this.status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+}

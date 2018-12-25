@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="tqgl" default="resolve" xmlns:ivy="antlib:org.apache.ivy.ant"
+	basedir="">
+
+	<ivy:settings file="ivysettings.xml" />
+	<property name="lib.dir" value="web\WEB-INF\lib" />
+	
+
+	<!--如果不是使用默认的ivy缓存目录，请在此处设置自定义的缓存目录 <property name="ivy.default.ivy.user.dir" 
+		value="W:\ivy" /> -->
+ 
+	<target name="convert" description="根据pom文件生成ivyNew.xml">
+		<ivy:convertpom pomFile="pom.xml" ivyFile="ivyNew.xml" />
+	</target>
+	
+	<target name="converttopom"  description="根据ivy文件生成pomNew.xml" >
+			<ivy:makepom ivyfile="ivy.xml" pomfile="pomNew.xml">
+  			 <mapping conf="default" scope="compile"/>
+   			 <mapping conf="runtime" scope="runtime"/>
+			</ivy:makepom>
+	</target>
+
+
+	<target name="resolve" description="--> 重新生成架包 retreive dependencies with ivy">
+		<ivy:retrieve pattern="${lib.dir}/[artifact]-[revision](-[classifier]).[ext]" />
+	</target>
+	
+	
+	<target name="cleanbuild" description="--> 清空重新生成架包">
+		<delete>
+			<fileset dir="${lib.dir}" includes="**/*.jar" />
+		</delete> 
+		<ivy:retrieve pattern="${lib.dir}/[artifact]-[revision](-[classifier]).[ext]" />
+	</target>
+
+</project>
+	

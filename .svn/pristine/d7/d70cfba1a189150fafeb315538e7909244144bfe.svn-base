@@ -1,0 +1,96 @@
+package shgjj.tqgl.sys.controller;
+
+import gov.util.bean.BeanUtils;
+import gov.util.jpa.Orders;
+import gov.util.jpa.Pages;
+import gov.util.jpa.Query;
+import gov.util.jpa.json.EasyUIJsonUtils;
+import gov.util.jpa.operator.FilterOperator;
+
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import shgjj.tqgl.sys.bo.TqSysVerifyResourceEntity;
+import shgjj.tqgl.sys.service.TqSysVerifyResourceService;
+import shgjj.tqgl.sys.service.impl.TqSysVerifyResourceServiceImpl;
+
+@Controller
+@RequestMapping("/tqSysVerifyResource")
+public class TqSysVerifyResourceController {
+
+	private Logger log = Logger.getLogger(TqSysMaterialCfgController.class);
+	
+	@Autowired
+	private TqSysVerifyResourceService tqSysVerifyResourceService; 
+	
+	@Autowired
+	private TqSysVerifyResourceServiceImpl tqSysVerifyResourceServiceImpl; 
+	
+	
+	
+	
+	@ResponseBody
+	@RequestMapping("/listTqSysVerifyResource")
+	public Map<String, Object> listtqSysVerifyResources(HttpServletRequest request,
+			HttpServletResponse response,@RequestParam HashMap<String, Object> conditions,
+			Integer page,Integer rows,
+			Map<String, Object> model) {
+		Query query = Query.from(TqSysVerifyResourceEntity.class).filter(conditions, null, FilterOperator.LIKE);  // 查询所有记录
+		Page<TqSysVerifyResourceEntity>  tqSysVerifyResourceEntities = tqSysVerifyResourceService.findAll(query, Pages.setPageAndSize(1,10));	
+		Map<String, Object> jsonMap = EasyUIJsonUtils.convertJpaPageToJson(tqSysVerifyResourceEntities);
+		return jsonMap;
+	}
+	
+	@RequestMapping("/editTqSysVerifyResource")
+	public String edittqSysVerifyResource(String verifyId,Map<String, Object> model){
+		log.info("the model is ： " + model);
+		/*TqSysVerifyResourceEntity tqSysVerifyResource = (TqSysVerifyResourceEntity)tqSysVerifyResourceService.find(TqSysVerifyResourceEntity.class, verifyId);
+		log.info("the tqSysVerifyResource is : " + tqSysVerifyResource);
+		model.put("tqSysVerifyResource", tqSysVerifyResource); 
+		log.info("the model size is : " + model.size());*/
+		return "/tqgl/sys/tqSysVerifyResource/tqSysVerifyResourceEdit";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/updateTqSysVerifyResource")
+	public Map<?, ?> updatetqSysVerifyResource(HttpServletRequest request,
+			HttpServletResponse response, TqSysVerifyResourceEntity tqSysVerifyResource){
+		TqSysVerifyResourceEntity newTqSysVerifyResource = (TqSysVerifyResourceEntity)tqSysVerifyResourceService.find(TqSysVerifyResourceEntity.class, tqSysVerifyResource.getVerifyId());
+		if(newTqSysVerifyResource != null)
+			BeanUtils.copyProperties(tqSysVerifyResource, newTqSysVerifyResource);
+		else
+			newTqSysVerifyResource = tqSysVerifyResource;
+		tqSysVerifyResourceService.save(newTqSysVerifyResource);
+		Map<String, Object> jsonMap = new HashMap<String, Object>();
+		jsonMap.put("result", "success");
+		return jsonMap;
+	}
+	
+	@ResponseBody
+	@RequestMapping("/deleteTqSysVerifyResource")
+	public String delete(String[] id){
+		tqSysVerifyResourceService.delete(TqSysVerifyResourceEntity.class,Arrays.asList(id));
+		return "sucess";
+	}
+
+	@RequestMapping("/saveTqSysVerifyResource")
+	public String savetqSysVerifyResource(String id,Map<String, Object> model){
+		
+		log.info("the mmodel is : " + model);
+		//tqSysVerifyResourceServiceImpl.addTqSysVerifyResource(tqSysVerifyResourceEntity);
+	
+		return "/listTqSysVerifyResource";
+	}
+}

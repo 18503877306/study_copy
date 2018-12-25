@@ -1,0 +1,61 @@
+package shgjj.tqgl.core.vo;
+
+/**
+ * 
+ * <p>Description: 人员基本信息VO</p>
+ * @author Lvxin
+ * @date 2017年8月15日下午5:03:29
+ *
+ */
+public class TqPersonBasicVO {
+	private String zjlx;
+	private String zjhm;
+	private String grzh;
+	private String xingming;
+	private String hyzk;
+	private String mateZjlx;
+	private String mateZjhm;
+	public String getZjlx() {
+		return zjlx;
+	}
+	public void setZjlx(String zjlx) {
+		this.zjlx = zjlx;
+	}
+	public String getZjhm() {
+		return zjhm;
+	}
+	public void setZjhm(String zjhm) {
+		this.zjhm = zjhm;
+	}
+	public String getGrzh() {
+		return grzh;
+	}
+	public void setGrzh(String grzh) {
+		this.grzh = grzh;
+	}
+	public String getXingming() {
+		return xingming;
+	}
+	public void setXingming(String xingming) {
+		this.xingming = xingming;
+	}
+	public String getHyzk() {
+		return hyzk;
+	}
+	public void setHyzk(String hyzk) {
+		this.hyzk = hyzk;
+	}
+	public String getMateZjlx() {
+		return mateZjlx;
+	}
+	public void setMateZjlx(String mateZjlx) {
+		this.mateZjlx = mateZjlx;
+	}
+	public String getMateZjhm() {
+		return mateZjhm;
+	}
+	public void setMateZjhm(String mateZjhm) {
+		this.mateZjhm = mateZjhm;
+	}
+	
+}

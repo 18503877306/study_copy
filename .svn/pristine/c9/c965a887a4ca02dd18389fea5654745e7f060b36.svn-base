@@ -1,0 +1,38 @@
+
+##test gjj
+#url:jdbc:oracle:thin:@xeawl.vicp.cc:33333:oratest
+#driverClassName:oracle.jdbc.driver.OracleDriver
+#username:tquser
+#password:tquser
+
+
+###test gjj
+url:jdbc:oracle:thin:@101.101.98.22:1521:testdb
+driverClassName:oracle.jdbc.driver.OracleDriver
+username:tquser
+password:tquser
+
+#java -cp druid-1.0.23.jar com.alibaba.druid.filter.config.ConfigTools you_password 即输出加密后密码
+
+
+filters:stat
+
+maxActive:20
+initialSize:1
+maxWait:60000
+minIdle:10
+maxIdle:15
+
+timeBetweenEvictionRunsMillis:60000
+minEvictableIdleTimeMillis:300000
+
+validationQuery:select 1 from dual
+testWhileIdle:true
+testOnBorrow:true
+testOnReturn:false
+poolPreparedStatements:true
+maxOpenPreparedStatements:20
+
+removeAbandoned:true
+removeAbandonedTimeout:1800
+logAbandoned:true

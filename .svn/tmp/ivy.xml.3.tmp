@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+   Licensed to the Apache Software Foundation (ASF) under one
+   or more contributor license agreements.  See the NOTICE file
+   distributed with this work for additional information
+   regarding copyright ownership.  The ASF licenses this file
+   to you under the Apache License, Version 2.0 (the
+   "License"); you may not use this file except in compliance
+   with the License.  You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+ 
+   Unless required by applicable law or agreed to in writing,
+   software distributed under the License is distributed on an
+   "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+   KIND, either express or implied.  See the License for the
+   specific language governing permissions and limitations
+   under the License.
+--> 
+<ivy-module version="2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ 	   xmlns:m="http://ant.apache.org/ivy/maven"
+       xsi:noNamespaceSchemaLocation="http://ant.apache.org/ivy/schemas/ivy.xsd">
+    <info
+        organisation="shgjj"  
+        module="framework"
+        status="integration">
+	</info>
+
+	<configurations>
+	    <conf name="compile" description="Compile classpath"/>
+	    <conf name="runtime" description="Runtime classpath" extends="compile"/>
+	    <conf name="test" description="Test classpath" extends="runtime"/>
+	</configurations>
+ 
+	<dependencies>
+
+		<!--com.wonders.gov-->
+		<!--<dependency org="com.wonders.gov" name="wfc" rev="1.3" transitive="false"/>
+		<dependency org="com.wonders.gov" name="wegov-server" rev="1.0" transitive="false"/>
+		<dependency org="com.wonders.gov" name="triones" rev="1.0" transitive="false"/>
+		<dependency org="com.wonders.gov" name="AppAudit" rev="1.0" transitive="false"/>-->
+		<dependency org="com.wonders.gov" name="gov-security-api" rev="1.0-SNAPSHOT" transitive="false"/>
+		<dependency org="com.wonders.gov" name="gov-util" rev="1.0-SHGJJ" transitive="false"/>
+		<dependency org="com.wonders.gov" name="gov-framework" rev="2.1-SNAPSHOT" transitive="false"/>
+        <dependency org="com.wonders.gov" name="gov-sso-p2p-client" rev="2.1-SHGJJ" transitive="false"/>
+     
+		<!--hibernate--> 
+		<dependency org="org.hibernate" name="hibernate-core" rev="4.2.21.Final" >
+			<exclude module="antlr"></exclude>
+			<exclude module="validation-api"></exclude>
+			<exclude module="cglib"></exclude>
+			<exclude module="javassist"></exclude>
+		</dependency>
+		<dependency org="org.hibernate" name="hibernate-entitymanager" rev="4.2.21.Final">
+			<exclude module="validation-api"></exclude>
+			<exclude module="javassist"></exclude>
+		</dependency>
+		<dependency org="org.hibernate" name="hibernate-oscache" rev="3.6.10.Final"/>
+<!-- 		<dependency org="org.hibernate" name="hibernate-commons-annotations" rev="3.2.0.Final"/> -->
+
+		<!--spring -->
+		<dependency org="org.springframework" name="spring-core" rev="4.2.0.RELEASE">
+	    </dependency>
+		<dependency org="org.springframework" name="spring-webmvc" rev="4.2.0.RELEASE">
+	    </dependency>
+		<dependency org="org.springframework" name="spring-test" rev="4.2.0.RELEASE" transitive="false">
+	    </dependency>
+		<dependency org="org.springframework.data" name="spring-data-jpa" rev="1.7.0.RELEASE" conf="compile->default">
+			<exclude module="aspectjrt"/>
+	    </dependency>
+	    <dependency org="quartz" name="quartz" rev="1.5.2" transitive="false"/>
+
+		<dependency org="junit" name="junit" rev="4.12" >
+	    </dependency>
+
+		<!-- commons -->
+		<dependency org="commons-lang" name="commons-lang" rev="2.5" transitive="false"/>
+		<dependency org="org.apache.commons" name="commons-lang3" rev="3.3.1" transitive="false"/>
+		<dependency org="org.apache.commons" name="commons-email" rev="1.3" transitive="false"/>
+		<dependency org="commons-beanutils" name="commons-beanutils" rev="1.8.0" transitive="false"/>
+		<dependency org="commons-codec" name="commons-codec" rev="1.3"/>
+		<dependency org="commons-collections" name="commons-collections" rev="3.2.1" transitive="false"/>
+		<dependency org="commons-configuration" name="commons-configuration" rev="1.3" transitive="false"/>
+		<dependency org="commons-dbcp" name="commons-dbcp" rev="1.2.2" transitive="false"/>
+		<dependency org="commons-digester" name="commons-digester" rev="1.8" transitive="false"/>
+		<dependency org="commons-discovery" name="commons-discovery" rev="0.5" transitive="false"/>
+		<dependency org="commons-httpclient" name="commons-httpclient" rev="3.1" transitive="false"/>
+		<dependency org="commons-io" name="commons-io" rev="1.3.1" transitive="false"/>
+		<dependency org="commons-logging" name="commons-logging" rev="1.1.1" transitive="false"/>
+		<dependency org="commons-pool" name="commons-pool" rev="1.2" transitive="false"/>
+		<dependency org="commons-validator" name="commons-validator" rev="1.1.4" transitive="false"/>
+		<dependency org="commons-fileupload" name="commons-fileupload" rev="1.3.1" transitive="false"/>
+		<dependency org="commons-net" name="commons-net" rev="2.0" transitive="false"/>
+
+		<!--dozer -->
+		<dependency org="net.sf.dozer" name="dozer" rev="5.4.0" transitive="false">
+	    </dependency>
+
+		<!--cglib & ognl-->
+		<dependency org="cglib" name="cglib" rev="3.1" transitive="false"/>
+		<dependency org="org.antlr" name="antlr" rev="3.5.2" transitive="false"/>
+		<dependency org="ognl" name="ognl" rev="3.0.8" transitive="false"/>
+
+		<!--druid-->
+		<dependency org="com.alibaba" name="druid" rev="1.0.23"  transitive="false"/>
+
+		<!--ojdbc-->
+		<dependency org="com.oracle" name="ojdbc6" rev="11.2.0.3"  transitive="false"/>
+
+		<!--sitemesh-->
+		<dependency org="org.sitemesh" name="sitemesh" rev="3.0-alpha-2" transitive="false"/>
+
+		<!--javasis-->
+		<dependency org="javassist" name="javassist" rev="3.12.1.GA" transitive="false"/>
+ 
+		<!--antrl-->
+		<dependency org="antlr" name="antlr" rev="2.7.7" transitive="false"/>
+
+		<!--ezmorph-->
+		<dependency org="net.sf.ezmorph" name="ezmorph" rev="1.0.6" transitive="false"/>
+
+		<!--dom4j-->
+		<dependency org="dom4j" name="dom4j" rev="1.6.1" transitive="false"/>
+
+		<!--AjaxFileUpload-->
+		<dependency org="com.davidjc" name="AjaxFileUpload" rev="0.03" transitive="false"/>
+
+		<!--json-lib-->
+		<dependency org="net.sf.json-lib" name="json-lib" rev="2.3" transitive="false">
+            <artifact name="json-lib" type="jar" m:classifier="jdk15"/>
+        </dependency>
+
+        <!--pinyin4j-->
+		<dependency org="com.belerweb" name="pinyin4j" rev="2.5.0" transitive="false"/>
+
+		<dependency org="com.fasterxml.jackson.core" name="jackson-core" rev="2.5.1" transitive="false"/>
+		<dependency org="com.fasterxml.jackson.core" name="jackson-databind" rev="2.5.1" transitive="false"/>
+
+		<dependency org="taglibs" name="standard" rev="1.1.2" transitive="false"/>
+		
+		<dependency org="org.slf4j" name="slf4j-log4j12" rev="1.7.25" transitive="false"/>
+
+        <exclude module="persistence-api"></exclude>
+        <exclude module="servlet-api"></exclude>
+        <exclude module="jsp-api"></exclude>
+        <exclude module="el-api"></exclude>
+        <exclude module="icu4j"></exclude>
+        <exclude org="org.apache.tiles"></exclude>
+        <exclude org="bouncycastle"></exclude>
+        <exclude module="pull-parser"></exclude>
+        
+
+    </dependencies>
+
+
+</ivy-module>

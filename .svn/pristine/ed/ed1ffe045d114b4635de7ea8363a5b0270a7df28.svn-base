@@ -1,0 +1,115 @@
+package shgjj.tqgl.common.constants;
+
+/**
+ * @author Shenhuali
+ * @version 创建时间：2017年8月14日 上午9:48:20 业务类型字典
+ */
+public class BusinessTypedDetailConstans {
+
+	
+	/** 离退休-到龄 */
+	public static final String RETIRE_ATTAINED_AGE = "000301";
+	/** 离退休-提前退休 */
+	public static final String RETIRE_EARLY = "000302";
+	/** 离退休-其他 */
+	public static final String RETIRE_OTHER = "000399";
+	
+	
+
+	/** 户口迁出本市 */
+	public static final String HKQC = "000501";
+	
+	/** 非沪籍职工劳动关系迁出 */
+	public static final String FHJLDGXQC = "000502";
+
+	/** 出境定居  */
+	public static final String LEAVE_COUNTRY = "000503";
+
+	/** 账户异地转移 */
+	public static final String TRANSFER = "000504";
+	
+	
+	/** 本市购房-现房  */
+	public static final String BUY_HOUSE_LOCAL_XF = "000101";
+
+	/** 外省市购房-现房  */
+	public static final String BUY_HOUSE_REMOTE_XF = "010101";
+	
+	/** 本市购房-期房  */
+	public static final String BUY_HOUSE_LOCAL_QF = "000102";
+
+	/** 外省市购房-期房  */
+	public static final String BUY_HOUSE_REMOTE_QF = "010102";
+	
+	/** 本市购房-存量房  */
+	public static final String BUY_HOUSE_LOCAL_CLF = "000103";
+
+	/** 外省市购房-存量房  */
+	public static final String BUY_HOUSE_REMOTE_CLF = "010103";
+	
+	/** 本市购房-公有住房-无产证  */
+	public static final String BUY_HOUSE_LOCAL_GYZF_WCZ = "000104";
+
+	/** 外省市购房-公有住房-无产证   */
+	public static final String BUY_HOUSE_REMOTE_GYZF_WCZ = "010104";
+	
+	/** 本市购房-拍卖房  */
+	public static final String BUY_HOUSE_LOCAL_PMF = "000105";
+
+	/** 外省市购房-拍卖房  */
+	public static final String BUY_HOUSE_REMOTE_PMF = "010105";
+	
+	/** 本市购房-动迁安置房  */
+	public static final String BUY_HOUSE_LOCAL_DQAZF = "000106";
+
+	/** 外省市购房-动迁安置房  */
+	public static final String BUY_HOUSE_REMOTE_DQAZF = "010106";
+	
+	
+	
+	
+	
+	
+	
+	/** 61:纯公积金   新代码    老代码42 */
+	public static final String SETTLEFUND = "61";
+
+	/** 62:纯商业   新代码    老代码42 */
+	public static final String SETTLEBIZ = "62";
+
+	/** 63:组合贷款   新代码    老代码42 */
+	public static final String SETTLECOMBIN = "63";
+	
+	
+	/** 建造自住住房   新代码    老代码 40 */
+	public static final String BUILD = "";
+
+	/** 翻建自住住房   新代码    老代码41 */
+	public static final String REBUILD = "";
+
+	/** 大修自住住房  新代码    老代码42 */
+	public static final String HEAVYREPAIR = "";
+	
+	
+	/** 80:错缴之农业户口 */
+	public static final String DRAWINGAGRO = "80";
+
+	/** 81:错缴之错缴多缴 */
+	public static final String DRAWINGMORE = "81";
+
+	/** 82:错缴之其他 */
+	public static final String DRAWINGOTHER = "82";
+	
+	
+	/** 85:最低生活保障   新代码    老代码42 */
+	public static final String TroubleLive = "85";
+
+	/** 86:重大病 */
+	public static final String TroubleIll = "86";
+
+	/** 87:连续失业两年 */
+	public static final String TroubleUnemployment = "87";
+
+	/** 88:其他生活困难 */
+	public static final String TroubleOthers = "88";
+}
